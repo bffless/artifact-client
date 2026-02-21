@@ -1,6 +1,6 @@
 {
   "name": "@bffless/artifact-client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Shared API client for BFFLESS artifact upload and download",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
