@@ -53,8 +53,20 @@ export interface PrepareBatchUploadRequest {
   basePath?: string;
   description?: string;
   tags?: string;
+  /** @deprecated prefer proxyRuleSetNames */
   proxyRuleSetName?: string;
+  /** @deprecated prefer proxyRuleSetIds */
   proxyRuleSetId?: string;
+  /**
+   * Comma-separated proxy rule set names to attach to the deployed alias.
+   * Echoed on finalize-upload — the values used there are authoritative.
+   */
+  proxyRuleSetNames?: string;
+  /**
+   * Comma-separated proxy rule set IDs to attach to the deployed alias.
+   * Echoed on finalize-upload — the values used there are authoritative.
+   */
+  proxyRuleSetIds?: string;
   files: BatchUploadFile[];
 }
 
@@ -73,6 +85,20 @@ export interface PrepareBatchUploadResponse {
 
 export interface FinalizeUploadRequest {
   uploadToken: string;
+  /** @deprecated prefer proxyRuleSetNames */
+  proxyRuleSetName?: string;
+  /** @deprecated prefer proxyRuleSetIds */
+  proxyRuleSetId?: string;
+  /**
+   * Comma-separated proxy rule set names to attach to the deployed alias.
+   * Appended idempotently. Overrides any value carried over from prepare-batch-upload.
+   */
+  proxyRuleSetNames?: string;
+  /**
+   * Comma-separated proxy rule set IDs to attach to the deployed alias.
+   * Appended idempotently. Overrides any value carried over from prepare-batch-upload.
+   */
+  proxyRuleSetIds?: string;
 }
 
 export interface DeploymentUrls {
