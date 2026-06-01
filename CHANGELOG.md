@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/bffless/artifact-client/compare/v1.0.0...v1.1.0) (2026-06-01)
+
+
+### Features
+
+* plural proxy rule set fields on prepare/finalize upload ([7418d2b](https://github.com/bffless/artifact-client/commit/7418d2bf56559a3589ff7e30a9165195f0652b16))
+* plural proxy rule set fields on prepare/finalize upload ([493f251](https://github.com/bffless/artifact-client/commit/493f2512b87e6843aee7eca2bb89abf65e5b6297))
+
 ## 1.0.0 (2026-02-21)
 
 
