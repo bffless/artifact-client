@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/bffless/artifact-client/compare/v1.1.0...v1.1.1) (2026-07-12)
+
+
+### Bug Fixes
+
+* send proxyRuleSetNames/proxyRuleSetIds as JSON arrays ([a723f3f](https://github.com/bffless/artifact-client/commit/a723f3f83630f69b57808de3d73e07ae0c89f3f6))
+* send proxyRuleSetNames/proxyRuleSetIds as JSON arrays ([4679727](https://github.com/bffless/artifact-client/commit/46797274756a79f86a741edbeb8455141221e632))
+
 ## [1.1.0](https://github.com/bffless/artifact-client/compare/v1.0.0...v1.1.0) (2026-06-01)
 
 
