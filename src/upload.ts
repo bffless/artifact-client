@@ -14,6 +14,18 @@ import {
 import { postJson } from './http';
 
 /**
+ * Normalize a plural proxy-rule-set field into a real array, splitting a
+ * legacy comma-separated string for back-compat. Returns undefined when the
+ * input is undefined or normalizes to an empty array, so the key is omitted
+ * from the JSON body rather than sent as `[]`.
+ */
+function toArray(v?: string[] | string): string[] | undefined {
+  if (v === undefined) return undefined;
+  const arr = Array.isArray(v) ? v : v.split(',').map((s) => s.trim()).filter(Boolean);
+  return arr.length > 0 ? arr : undefined;
+}
+
+/**
  * Request presigned URLs for batch upload
  */
 export async function requestPrepareBatchUpload(
@@ -25,7 +37,13 @@ export async function requestPrepareBatchUpload(
 
   core.info(`Requesting presigned URLs for ${request.files.length} files...`);
 
-  const response = await postJson<PrepareBatchUploadResponse>(url, request, apiKey);
+  const body = {
+    ...request,
+    proxyRuleSetNames: toArray(request.proxyRuleSetNames),
+    proxyRuleSetIds: toArray(request.proxyRuleSetIds),
+  };
+
+  const response = await postJson<PrepareBatchUploadResponse>(url, body, apiKey);
 
   return response;
 }
@@ -42,7 +60,13 @@ export async function finalizeUpload(
 
   core.info('Finalizing upload...');
 
-  const response = await postJson<UploadResponse>(url, request, apiKey);
+  const body = {
+    ...request,
+    proxyRuleSetNames: toArray(request.proxyRuleSetNames),
+    proxyRuleSetIds: toArray(request.proxyRuleSetIds),
+  };
+
+  const response = await postJson<UploadResponse>(url, body, apiKey);
 
   return response;
 }
