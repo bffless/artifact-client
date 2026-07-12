@@ -58,15 +58,17 @@ export interface PrepareBatchUploadRequest {
   /** @deprecated prefer proxyRuleSetIds */
   proxyRuleSetId?: string;
   /**
-   * Comma-separated proxy rule set names to attach to the deployed alias.
+   * Proxy rule set names to attach to the deployed alias. Arrays are sent as-is;
+   * a comma-separated string is accepted for back-compat and normalized.
    * Echoed on finalize-upload — the values used there are authoritative.
    */
-  proxyRuleSetNames?: string;
+  proxyRuleSetNames?: string[] | string;
   /**
-   * Comma-separated proxy rule set IDs to attach to the deployed alias.
+   * Proxy rule set IDs to attach to the deployed alias. Arrays are sent as-is;
+   * a comma-separated string is accepted for back-compat and normalized.
    * Echoed on finalize-upload — the values used there are authoritative.
    */
-  proxyRuleSetIds?: string;
+  proxyRuleSetIds?: string[] | string;
   files: BatchUploadFile[];
 }
 
@@ -90,15 +92,17 @@ export interface FinalizeUploadRequest {
   /** @deprecated prefer proxyRuleSetIds */
   proxyRuleSetId?: string;
   /**
-   * Comma-separated proxy rule set names to attach to the deployed alias.
+   * Proxy rule set names to attach to the deployed alias. Arrays are sent as-is;
+   * a comma-separated string is accepted for back-compat and normalized.
    * Appended idempotently. Overrides any value carried over from prepare-batch-upload.
    */
-  proxyRuleSetNames?: string;
+  proxyRuleSetNames?: string[] | string;
   /**
-   * Comma-separated proxy rule set IDs to attach to the deployed alias.
+   * Proxy rule set IDs to attach to the deployed alias. Arrays are sent as-is;
+   * a comma-separated string is accepted for back-compat and normalized.
    * Appended idempotently. Overrides any value carried over from prepare-batch-upload.
    */
-  proxyRuleSetIds?: string;
+  proxyRuleSetIds?: string[] | string;
 }
 
 export interface DeploymentUrls {
